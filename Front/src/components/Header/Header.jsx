@@ -1,15 +1,27 @@
 import React from 'react'
 import TypeIt from 'typeit-react'
+import "./header.scss"
 
 export default function Header() {
   return (
-    <div>
+    <header>
         <TypeIt
-        getBeforeInit={(instance) => {
-            instance.type("Tiotua".pause(750).delete(4).pause(500).type("touan Belliadr").pause(750).delete(2).pause(500).type("rd"))
-            return instance
+        className="Name"
+        element={"h1"}
+        getBeforeInit={(Name) => {
+
+            Name.type("Titouan Belliard").pause(1500).delete(16).type("Intégrateur Web").pause(1500)
+
+            return Name 
+
+        }}
+        
+        options={{
+          speed: 100,
+          waitUntilVisible: true,
+          loop: true
         }}
         />
-    </div>
+</header>
   )
 }
