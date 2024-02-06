@@ -8,13 +8,20 @@
     box-shadow: -5px 5px 0px 2px rgba(255, 191, 0, 1);
     margin:  25px auto;
 
+    &:hover .load-competence{
+        animation-play-state: paused;
+    }
+
 
     .load-competence{
         height: 10px;
         width: 100%;
         background-color: $color-accents;
-        animation: progressAnimation 5s linear;
+        animation: progressAnimation 5s infinite;
+
+        
     }
+
 }
 
 
