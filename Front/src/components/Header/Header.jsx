@@ -7,10 +7,10 @@ export default function Header() {
     <header>
         <TypeIt
         className="Name"
-        element={"h1"}
+        as={"h1"}
         getBeforeInit={(Name) => {
 
-            Name.type("Titouan Belliard").pause(1500).delete(16).type("Intégrateur Web").pause(1500)
+            Name.type("Titouan Belliard").pause(3000).delete(16).type("Intégrateur Web").pause(3000)
 
             return Name 
 

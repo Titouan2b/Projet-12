@@ -1,0 +1,9 @@
+@import "../../var.scss";
+
+footer{
+    min-height: 200px;
+    background-color: $color-header;
+    border-top: solid 3px $color-accents;
+    color: white;
+    margin-top: 20px;
+}

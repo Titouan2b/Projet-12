@@ -6,10 +6,11 @@ header{
     align-items: center;
     background-color: $color-header;
     
-    color: white;
-    border-bottom:  solid 3px $color-accents;
-    min-height: 350px;
+    color: $color-accents;
+    border-bottom:  solid 6px $color-accents;
+    min-height: 930px;
     gap: 50px;
+    margin-bottom: 20px;
 }
 
 .Name{
@@ -18,5 +19,5 @@ header{
 }
 
 .ti-cursor{
-    width: var(--ti-cursor-width, 15px);
+    width: var(--ti-cursor-color, white);
 }

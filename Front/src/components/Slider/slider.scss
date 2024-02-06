@@ -1,0 +1,31 @@
+@import "../../var.scss";
+
+.slider{
+    display: flex;
+    justify-content: space-between;
+    i{
+        font-size: 150px;
+        color: black;
+    }
+}
+
+.button-right{
+    border: none;
+    background: none;
+    
+}
+
+.slider-content{
+    position: relative;
+    i{
+        color: $color-accents;
+        opacity: 0.3;
+    }
+    p{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+    }
+}
