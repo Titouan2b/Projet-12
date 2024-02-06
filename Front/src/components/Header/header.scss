@@ -11,6 +11,10 @@ header{
     min-height: 930px;
     gap: 50px;
     margin-bottom: 20px;
+    
+    .ti-cursor{
+        width: var(--ti-cursor-color, white);
+    }
 }
 
 .Name{
@@ -18,6 +22,3 @@ header{
     margin-left: 150px;
 }
 
-.ti-cursor{
-    width: var(--ti-cursor-color, white);
-}

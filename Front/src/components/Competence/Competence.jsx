@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./competence.scss"
 // import "./competence.js"
 import Slider from '../Slider/Slider.jsx'
+import { Animator, Fade, MoveIn, batch } from 'react-scroll-motion'
 
 export default function Competence() {
   const [currentImageIndex, setCurrentImageIndex] = useState()
@@ -17,11 +18,11 @@ export default function Competence() {
     },
     {
       "icone" : "fa-solid fa-palette",
-      "paragraphe" : "coucou"
+      "paragraphe" : "3"
     },
     {
       "icone" : "fa-solid fa-camera",
-      "paragraphe" : "coucou"
+      "paragraphe" : "4"
     }
   ]
 
@@ -54,11 +55,13 @@ export default function Competence() {
 
 
   return (
-    <div className='competence'>
-      <h2>Mes compétences</h2>
-      <div className='load-competence' style={{width: `${progress}$`}}>      
+    <Animator animation={batch(Fade(0, 1), MoveIn(0, 50))}>
+      <div className='competence'>
+        <h2>Mes compétences</h2>
+        <div className='load-competence' style={{width: `${progress}$`}}>      
+        </div>
+        <Slider slides={slidesContent}/>
       </div>
-      <Slider slides={slidesContent}/>
-    </div>
+    </Animator>
   )
 }

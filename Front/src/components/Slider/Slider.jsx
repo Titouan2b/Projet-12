@@ -18,9 +18,6 @@ export default function Slider({slides}) {
       console.log(currentSlide)
     }
 
-  
-    const texte = slides[currentSlide].paragraphe
-    console.log(texte)
 
   return (
     <div className="slider">
@@ -28,23 +25,25 @@ export default function Slider({slides}) {
 
         <div className='slider-content'>
             <i className={slides[currentSlide].icone}></i>
-            <TypeIt
+            {/* <TypeIt
             className="Comp" 
             as={"p"}
-            getBeforeInit={(Comp) => {
+            // getBeforeInit={(Comp) => {
 
-              Comp.type(texte)
+            //   Comp.type(slides[currentSlide].paragraphe)
 
-              return Comp
-            }}
+            //   return Comp
+            // }}
             
             options={{
+              strings: [slides[currentSlide].paragraphe], 
               speed: 100,
               waitUnilVisible: true,
               
             }}
             
-            />
+            /> */}
+            <p>{slides[currentSlide].paragraphe}</p>
         </div>
         <button className='button-right' onClick={nextSlide}><i className="fa-solid fa-angle-right"></i></button>
 

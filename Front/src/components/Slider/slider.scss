@@ -15,6 +15,12 @@
     
 }
 
+.button-left{
+    border: none;
+    background: none;
+    
+}
+
 .slider-content{
     position: relative;
     i{
@@ -27,5 +33,10 @@
         bottom: 0;
         right: 0;
         left: 0;
+
+        .ti-cursor{
+            width: var(--ti-cursor-second-color, black);
+        }
     }
 }
+
