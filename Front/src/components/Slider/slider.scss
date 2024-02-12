@@ -3,6 +3,9 @@
 .slider{
     display: flex;
     justify-content: space-between;
+    // .slider-content:hover{
+    //     animation-play-state: paused;
+    // }
     i{
         font-size: 150px;
         color: black;
@@ -23,6 +26,8 @@
 
 .slider-content{
     position: relative;
+    text-align: center;
+    width: 100%;
     i{
         color: $color-accents;
         opacity: 0.3;
@@ -33,6 +38,7 @@
         bottom: 0;
         right: 0;
         left: 0;
+        
 
         .ti-cursor{
             width: var(--ti-cursor-second-color, black);
