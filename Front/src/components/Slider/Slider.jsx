@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import './slider.scss'
 import TypeIt from 'typeit-react'
+import ProgressBar from '../ProgressBar/ProgressBar'
 
 export default function Slider({slides}) {
 
   //changement d'image avec les flèches
   const [currentSlide, setCurrentSlide] = useState(0) 
-  const [progress, setProgress] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
-  const animationDuration = 30
+  const [completed, setCompleted] = useState(0)
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
+  const [isHovered, setIsHovered] = useState(false);
 
   const changeImage = () => {
       setCurrentSlide((prevIndex) => (prevIndex + 1) % slides.length - 1)
@@ -18,32 +20,59 @@ export default function Slider({slides}) {
   const nextSlide = () => {
       setCurrentSlide((newSlide) => newSlide === slides.length -1 ? 0 : newSlide + 1)
       console.log(currentSlide)
-      setProgress(0)
+      setCompleted(0)
   }
 
   const previousSlide = () => {
       setCurrentSlide((lastSlide) => lastSlide === 0 ? slides.length -1 : lastSlide - 1)
       console.log(currentSlide)
-      setProgress(0)
+      setCompleted(0)
   }
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    setIsPaused(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setIsPaused(false);
+  };
+
+  useEffect(() => {
+    const intervalCompleted = setInterval(() => {
+      setCompleted((prevValue) => (prevValue < 100 ? prevValue + 1 : 0))
+      if(setCompleted === 100){
+        setCurrentSlideIndex((prevIndex) => prevIndex === slides.length -1 ? 0 : prevIndex + 1)
+      }
+    
+    }, 50)
+    
+      return () => clearInterval(intervalCompleted)
+  }, [completed, slides.length, isHovered])
 
   useEffect(() => {
       if(!isPaused){
-        const interval = setInterval(changeImage, animationDuration * 1000)
+        const interval = setInterval(() => {
+          changeImage()
+        }, 5000)
         return() => {
 
           clearInterval(interval)
         }
       }
-  }, [currentSlide, isPaused])
+  }, [currentSlide, isPaused, slides.length, isHovered])
+
+  console.log(currentSlideIndex)
 
 return (
-  <div>
-    <div className='load-competence' style={{width: `${progress}$`}}></div>
-    <div className="slider" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+  <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <ProgressBar value={completed} bgcolor="#ffbf00" completed={completed}  />
+    <div className="slider" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
+>
         <button className='button-left' onClick={previousSlide}><i className="fa-solid fa-angle-left"></i></button>
 
-        <div className='slider-content'>
+        <div value={currentSlideIndex} className='slider-content'>
             <i className={slides[currentSlide].icone}></i>
             <TypeIt
                 key={currentSlide} // Pour forcer le rechargement du composant

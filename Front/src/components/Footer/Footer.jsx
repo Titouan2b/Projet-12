@@ -47,7 +47,7 @@ export default function Footer() {
     setStatus((prevStatus) => ({ ...prevStatus, submitting: true }));
     axios({
       method: 'POST',
-      url: 'https://formspree.io/[your-formspree-endpoint]',
+      url: 'https://formspree.io/f/xpzvdwpk',
       data: inputs,
     })
       .then((response) => {
