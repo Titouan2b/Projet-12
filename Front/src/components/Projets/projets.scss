@@ -10,11 +10,9 @@
 
     .space-around{
         display: flex;
+        flex-direction: row;
         justify-content: space-around;
         align-items: flex-start;
-    }
-    .nav{
-
     }
     
     h3{

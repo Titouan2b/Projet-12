@@ -60,7 +60,7 @@
 }
 
 .content {
-    background-color: rgba(246, 246, 246, 1) ;
+    background-color: #f8f8f8;
 
     padding: 15px;
     color: black;
@@ -70,13 +70,6 @@
 }
     
 .content-parent {
-    position: absolute;
-    top: 72px;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    margin: 0 auto 0 auto;
-    width: 80%;
     height: 0px;
     overflow: hidden;
     transition: height ease 0.5s;

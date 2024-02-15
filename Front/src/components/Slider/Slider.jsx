@@ -19,13 +19,13 @@ export default function Slider({slides}) {
 
   const nextSlide = () => {
       setCurrentSlide((newSlide) => newSlide === slides.length -1 ? 0 : newSlide + 1)
-      console.log(currentSlide)
+
       setCompleted(0)
   }
 
   const previousSlide = () => {
       setCurrentSlide((lastSlide) => lastSlide === 0 ? slides.length -1 : lastSlide - 1)
-      console.log(currentSlide)
+
       setCompleted(0)
   }
 
@@ -63,12 +63,11 @@ export default function Slider({slides}) {
       }
   }, [currentSlide, isPaused, slides.length, isHovered])
 
-  console.log(currentSlideIndex)
 
 return (
   <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <ProgressBar value={completed} bgcolor="#ffbf00" completed={completed}  />
-    <div className="slider" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
+    <div className="slider" 
 >
         <button className='button-left' onClick={previousSlide}><i className="fa-solid fa-angle-left"></i></button>
 
