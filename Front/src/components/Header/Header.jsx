@@ -1,6 +1,7 @@
 import React from 'react'
 import TypeIt from 'typeit-react'
 import "./header.scss"
+import portrait from "../../assets/Photo_de_profil.jpg"
 
 export default function Header() {
   return (
@@ -22,6 +23,9 @@ export default function Header() {
           loop: true
         }}
         />
-</header>
+        <div className='portrait'>
+          <img src={portrait} alt="photo de profil" />
+        </div>
+    </header>
   )
 }

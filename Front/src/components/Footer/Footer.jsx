@@ -85,9 +85,9 @@ export default function Footer() {
         <button type="submit" disabled={status.submitting}>
           {!status.submitting
             ? !status.submitted
-              ? 'Submit' 
-              : 'Submitted'
-            : 'Submitting...'}
+              ? 'Envoyer' 
+              : 'Message envoyer'
+            : 'En cours d\'envoie...'}
         </button>
       </form>
       {status.info.error && (

@@ -28,13 +28,14 @@
     position: relative;
     text-align: center;
     width: 100%;
+    padding: 25px;
     i{
         color: $color-accents;
         opacity: 0.3;
     }
     p{
         position: absolute;
-        top: 0;
+        top: 50px;
         bottom: 0;
         right: 0;
         left: 0;

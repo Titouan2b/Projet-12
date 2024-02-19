@@ -1,5 +1,44 @@
-.space-around{
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-}
+    
+    
+    .space-around{
+        width: 100%;
+        .nav{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            button{
+                cursor: pointer;
+                background-color: white;
+                border: none;
+                font-size: 25px;
+                width: 100%;
+            }
+            .active{
+                background-color: #d6d6d6;  
+            }
+        }
+        
+    }
+    
+    
+    
+    .tab-content{
+        h4{
+            font-size: 20px;
+            text-align: center;
+        }
+        div{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px;
+            p{
+                padding: 10px;
+                text-align: center;
+            }
+            img{
+                width: 60%;
+            }
+        }
+    }

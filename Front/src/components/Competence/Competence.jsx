@@ -26,7 +26,6 @@ export default function Competence() {
     }
   ]
 
-  //changement d'image avec la progress bar
   
 
 

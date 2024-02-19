@@ -1,8 +1,9 @@
 @import "../../var.scss";
 
 header{
+    position: relative;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     background-color: $color-header;
     
@@ -15,10 +16,27 @@ header{
     .ti-cursor{
         width: var(--ti-cursor-color, white);
     }
-}
+    .Name{
+        width: 550px;
+        font-size: 75px;
+        margin-left: 150px;
+    }
 
-.Name{
-    font-size: 75px;
-    margin-left: 150px;
-}
+    .portrait{
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        margin-right: 350px;
+        img{
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+        
+    }
+
+    
+
 

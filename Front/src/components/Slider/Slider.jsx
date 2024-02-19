@@ -1,94 +1,79 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './slider.scss'
 import TypeIt from 'typeit-react'
 import ProgressBar from '../ProgressBar/ProgressBar'
 
 export default function Slider({slides}) {
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
+    const [completed, setCompleted] = useState(0);
 
-  //changement d'image avec les flèches
-  const [currentSlide, setCurrentSlide] = useState(0) 
-  const [isPaused, setIsPaused] = useState(false)
-  const [completed, setCompleted] = useState(0)
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
-  const [isHovered, setIsHovered] = useState(false);
-
-  const changeImage = () => {
-      setCurrentSlide((prevIndex) => (prevIndex + 1) % slides.length - 1)
-      nextSlide()
-  }
-
-  const nextSlide = () => {
-      setCurrentSlide((newSlide) => newSlide === slides.length -1 ? 0 : newSlide + 1)
-
-      setCompleted(0)
-  }
-
-  const previousSlide = () => {
-      setCurrentSlide((lastSlide) => lastSlide === 0 ? slides.length -1 : lastSlide - 1)
-
-      setCompleted(0)
-  }
+    /*
+    simplification de la fonction next et prev en faisant tout dans la même fonction
+     */
+    const changeImage = (direction) => {
+        setCurrentSlide((prevSlide) => {
+            // Condition ternaire pour faire avancer ou reculer dans le slider
+            const index = direction === 'next' ? prevSlide + 1 : prevSlide - 1;
+            // Gèrer la boucle du slider en restant dedans grâce à un modulo (%) sur la longueur du tableau
+            return (index + slides.length) % slides.length;
+        });
+        // Réinitialisation de la barre de progression
+        setCompleted(0);
+    };
 
   const handleMouseEnter = () => {
-    setIsHovered(true);
+    // setIsHovered(true); il ne sert pas à grand chose
     setIsPaused(true);
   };
 
   const handleMouseLeave = () => {
-    setIsHovered(false);
+    // setIsHovered(false); il ne sert pas à grand chose
     setIsPaused(false);
   };
 
+  //pour gérer la pause sur la barre de progression
   useEffect(() => {
-    const intervalCompleted = setInterval(() => {
-      setCompleted((prevValue) => (prevValue < 100 ? prevValue + 1 : 0))
-      if(setCompleted === 100){
-        setCurrentSlideIndex((prevIndex) => prevIndex === slides.length -1 ? 0 : prevIndex + 1)
+      let intervalCompleted // initialisation pour le sortir qu'il soit accessible partout dans le useEffect
+      if (!isPaused) {
+          intervalCompleted = setInterval(() => {
+              setCompleted((prevValue) => (prevValue < 100 ? prevValue + 1 : 100));
+          }, 100); // Incrémente la barre de progression toutes les 50ms
       }
-    
-    }, 50)
-    
       return () => clearInterval(intervalCompleted)
-  }, [completed, slides.length, isHovered])
+  }, [isPaused])
 
-  useEffect(() => {
-      if(!isPaused){
-        const interval = setInterval(() => {
-          changeImage()
-        }, 5000)
-        return() => {
-
-          clearInterval(interval)
+    //pour gérer la réinitialisation automatique de la barre de progression à part
+    useEffect(() => {
+        if (completed >= 100) {
+            changeImage('next');
+            setCompleted(0);
         }
-      }
-  }, [currentSlide, isPaused, slides.length, isHovered])
+    }, [completed])
 
 
-return (
-  <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <ProgressBar value={completed} bgcolor="#ffbf00" completed={completed}  />
-    <div className="slider" 
->
-        <button className='button-left' onClick={previousSlide}><i className="fa-solid fa-angle-left"></i></button>
+    return (
+      <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          <ProgressBar value={completed} bgcolor="#ffbf00" completed={completed}  />
+        <div className="slider">
+            <button className='button-left' onClick={() => changeImage('prev')}><i className="fa-solid fa-angle-left"></i></button>
 
-        <div value={currentSlideIndex} className='slider-content'>
-            <i className={slides[currentSlide].icone}></i>
-            <TypeIt
-                key={currentSlide} // Pour forcer le rechargement du composant
-                className="Comp"
-                as={"p"}
-                options={{
-                    strings: [slides[currentSlide].paragraphe],
-                    speed: 50,
-                    waitUntilVisible: true,
-                }}
-            />
-
+            <div value={currentSlide} className='slider-content'>
+                <i className={slides[currentSlide].icone}></i>
+                <TypeIt
+                    key={currentSlide} // Pour forcer le rechargement du composant
+                    className="Comp"
+                    as={"p"}
+                    options={{
+                        strings: [slides[currentSlide].paragraphe],
+                        speed: 50,
+                        waitUntilVisible: true,
+                    }}
+                />
+            </div>
+            <button className='button-right' onClick={() => changeImage('next')}><i className="fa-solid fa-angle-right"></i></button>
         </div>
-        <button className='button-right' onClick={nextSlide}><i className="fa-solid fa-angle-right"></i></button>
+      </div>
 
-    </div>
-  </div>
-
-)
+    )
 }
