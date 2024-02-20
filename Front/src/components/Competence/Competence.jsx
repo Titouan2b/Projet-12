@@ -30,12 +30,20 @@ export default function Competence() {
 
 
   return (
-    <Animator animation={batch(Fade(0, 1), FadeOut(1, 1), MoveIn(0, 50))}>
-      <div className='competence'>
-        <h2>Mes compétences</h2>
-        
-        <Slider slides={slidesContent}/>
-      </div>
-    </Animator>
+    <div>
+      <Animator className='desktop' animation={batch(Fade(0, 1), FadeOut(1, 1), MoveIn(0, 50))}>
+        <div className='competence'>
+          <h2>Mes compétences</h2>
+          
+          <Slider slides={slidesContent}/>
+        </div>
+      </Animator>
+      
+      <div className='competence tel'>
+          <h2>Mes compétences</h2>
+          
+          <Slider slides={slidesContent}/>
+        </div>
+    </div>
   )
 }

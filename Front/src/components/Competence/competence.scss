@@ -5,7 +5,11 @@
     width: 80%;
     background-color: white;
     box-shadow: -5px 5px 0px 2px rgba(255, 191, 0, 1);
-    margin:  25px auto;
+    margin:  75px auto;
+    h2{
+        font-size: 30px;
+        padding: 10px;
+    }
 
     &:hover .load-competence{
         animation-play-state: paused;

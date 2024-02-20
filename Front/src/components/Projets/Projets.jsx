@@ -14,12 +14,21 @@ export default function Projets() {
 
 
   return (
-    <Animator animation={batch(Fade(0, 1), FadeOut(1, 1), MoveIn(0, 50))}>
-      <div className='projets'>
-        <div className='space-around'>
-         <Tabs />
+    <div>
+      <Animator className='desktop' animation={batch(Fade(0, 1), FadeOut(1, 1), MoveIn(0, 50))}>
+        <div className='projets'>
+          <div className='space-around'>
+          <Tabs />
+          </div>
+        </div>
+      </Animator>
+      <div className='tel'>
+        <div className='projets'>
+          <div className='space-around'>
+          <Tabs />
+          </div>
         </div>
       </div>
-    </Animator>
+    </div>
   )
 }

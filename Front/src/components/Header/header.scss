@@ -40,3 +40,18 @@ header{
     
 
 
+@media screen and (max-width: 768px) {
+    header{
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-around;
+        align-items: center;
+        .Name{
+            margin: 0px;
+        }
+        .portrait{
+            margin: 0px;
+        }
+    }
+    
+}
