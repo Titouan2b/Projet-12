@@ -47,3 +47,23 @@
     }
 }
 
+@media screen and (max-width: 768px) {
+    .button-left{
+        i{
+            font-size: 70px;
+        }
+
+    }
+    .button-right{
+        i{
+            font-size: 70px;
+        }
+
+    }
+
+    .slider-content{
+        p{
+            top: 40px;
+        }
+    }
+}

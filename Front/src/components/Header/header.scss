@@ -50,7 +50,13 @@ header{
             margin: 0px;
         }
         .portrait{
+            width: 200px;
+            height: 200px;
             margin: 0px;
+            img{
+                width: 200px;
+                height: 200px;
+            }
         }
     }
     

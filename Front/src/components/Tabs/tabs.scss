@@ -66,6 +66,7 @@
     @media screen and (max-width: 768px) {
         .space-around{
             .nav{
+                flex-direction: column;
                 button{
                     font-size: 15px;
                 }
@@ -75,6 +76,9 @@
             div{
                 display: flex;
                 flex-direction: column-reverse;
+                .lien{
+                    padding: 5px;
+                }
             }
         }
         
