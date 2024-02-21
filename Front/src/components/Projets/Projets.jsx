@@ -7,12 +7,6 @@ import Tabs from '../Tabs/Tabs'
 
 
 export default function Projets() {
-
-
-
-
-
-
   return (
     <div>
       <Animator className='desktop' animation={batch(Fade(0, 1), FadeOut(1, 1), MoveIn(0, 50))}>

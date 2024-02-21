@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import "./competence.scss"
-// import "./competence.js"
 import Slider from '../Slider/Slider.jsx'
 import { Animator, Fade, FadeOut, MoveIn, batch } from 'react-scroll-motion'
 
@@ -10,19 +9,19 @@ export default function Competence() {
   const slidesContent = [
     {
       "icone" : "fa-brands fa-figma",
-      "paragraphe" : "J'ai une maitrise normal sur figma, je peux créer une maquette d'un site internet fonctionnel"
+      "paragraphe" : "J'ai une maitrise normale sur figma, je peux créer une maquette d'un site internet fonctionnel"
     },
     {
       "icone" : "fa-solid fa-code",
-      "paragraphe" : "A ce-jours, je connais plusieurs langage dont HTML & CSS, Javascript et React"
+      "paragraphe" : "À ce-jours, je connais plusieurs langages dont HTML & CSS, Javascript et React"
     },
     {
       "icone" : "fa-solid fa-palette",
-      "paragraphe" : "J'ai quelque notion en infographie dans la modification de l'image et la création de logo simple (Photoshop et Illustrator)"
+      "paragraphe" : "J'ai quelques notions en infographie dans la modification de l'image et la création du logo simple (Photoshop et Illustrator)"
     },
     {
       "icone" : "fa-solid fa-camera",
-      "paragraphe" : "J'ai des connaissances en audiovisuelle sur le montage vidéo (Premiere Pro) "
+      "paragraphe" : "J'ai des connaissances en audiovisuelles sur le montage vidéo (Premiere Pro) "
     }
   ]
 

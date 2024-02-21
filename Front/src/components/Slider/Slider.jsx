@@ -8,42 +8,36 @@ export default function Slider({slides}) {
     const [isPaused, setIsPaused] = useState(false);
     const [completed, setCompleted] = useState(0);
 
-    /*
-    simplification de la fonction next et prev en faisant tout dans la même fonction
-     */
     const changeImage = (direction) => {
         setCurrentSlide((prevSlide) => {
-            // Condition ternaire pour faire avancer ou reculer dans le slider
             const index = direction === 'next' ? prevSlide + 1 : prevSlide - 1;
-            // Gèrer la boucle du slider en restant dedans grâce à un modulo (%) sur la longueur du tableau
             return (index + slides.length) % slides.length;
         });
-        // Réinitialisation de la barre de progression
+
         setCompleted(0);
     };
 
   const handleMouseEnter = () => {
-    // setIsHovered(true); il ne sert pas à grand chose
+
     setIsPaused(true);
   };
 
   const handleMouseLeave = () => {
-    // setIsHovered(false); il ne sert pas à grand chose
+
     setIsPaused(false);
   };
 
-  //pour gérer la pause sur la barre de progression
   useEffect(() => {
-      let intervalCompleted // initialisation pour le sortir qu'il soit accessible partout dans le useEffect
+      let intervalCompleted 
       if (!isPaused) {
           intervalCompleted = setInterval(() => {
               setCompleted((prevValue) => (prevValue < 100 ? prevValue + 1 : 100));
-          }, 100); // Incrémente la barre de progression toutes les 50ms
+          }, 100); 
       }
       return () => clearInterval(intervalCompleted)
   }, [isPaused])
 
-    //pour gérer la réinitialisation automatique de la barre de progression à part
+
     useEffect(() => {
         if (completed >= 100) {
             changeImage('next');
@@ -61,7 +55,7 @@ export default function Slider({slides}) {
             <div value={currentSlide} className='slider-content'>
                 <i className={slides[currentSlide].icone}></i>
                 <TypeIt
-                    key={currentSlide} // Pour forcer le rechargement du composant
+                    key={currentSlide} 
                     className="Comp"
                     as={"p"}
                     options={{
